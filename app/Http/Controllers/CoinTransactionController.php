@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Coin;
 
+use App\Services\ExchangeRateService;
+
 class CoinTransactionController extends Controller
 {
-    // protected 
+    public $exchangeRateService;
 
-    public function __construct()
+    public function __construct(ExchangeRateService $exchangeRateService)
     {
-
+        $this->exchangeRateService = $exchangeRateService;
     }
 
     public function buyForm(Coin $coin)
