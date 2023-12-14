@@ -31,102 +31,59 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                        Product name
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Color
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                        Category
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Price
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-gray-200 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                        Apple MacBook Pro 17"
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        Silver
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        Laptop
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        $2999
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                        Microsoft Surface Pro
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        White
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        Laptop PC
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        $1999
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                        Magic Mouse 2
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        Black
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        Accessories
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        $99
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-200 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                        Google Pixel Phone
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        Gray
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        Phone
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        $799
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                        Apple Watch 5
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        Red
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        Wearables
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        $999
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
 
-                    <!-- paginate-link -->
+                        <div class="grid justify-items-center;">
+                            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+                                @if(!\Auth::user()->isAdmin())
+                                <p class="ml-5 my-3 text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Balance: ₦{{ number_format($balance, 2) }}</p>
+                                
+                                <div class="btn">
+                                    <button type="button" class="mr-5 ml-5 my-3 text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a href="{{ route('wallets.index') }}">Deposit</a></button>
+                                </div>
+                                @endif
+                            </div>
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-800">
+                                <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-dark">
+                                            Assets name
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-dark">
+                                            Assets Code
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-dark">
+                                            Rates 
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-dark">
+                                            Action 
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($coins as $coin)
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-sm">
+                                    
+                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->name }}</a></td>
+                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->code }}</a></td>
+                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->rate }}</a></td>
+                                        <td  class="px-6 py-3 mx-3">
+                                            <a href="{{ route('coins.buy.form', $coin) }}" class="mr-5 ml-5 my-3 text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Buy</a> /
+                                            <a href="{{ route('coins.sell.form', $coin) }}" class="mr-5 ml-5 my-3 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Sell</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                     
+                        </div>
+    
+                    </div> 
+
                 </div>
+
             </div>
         </div>
+        
     </div>
+
 </x-app-layout>

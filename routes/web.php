@@ -7,7 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\WalletController;
-use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\CoinTransactionController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,15 +38,33 @@ Route::middleware('auth')->group(function () {
     
     Route::resource('homes',   HomeController::class);
     Route::resource('markets', MarketController::class);
-    Route::resource('wallets', WalletController::class);
-    Route::resource('transactions', TransactionsController::class);
-    
+    // Route::resource('wallets', WalletController::class);
+    Route::resource('transactions', TransactionController::class);
+    Route::resource('coin-transactions', CoinTransactionController::class);
+
+    Route::controller(CoinTransactionController::class)->group(function () {
+        Route::get('coins/buy/{coin}', 'buyForm')->name('coins.buy.form');
+        Route::get('coins/buy/', 'buy')->name('coins.buy');
+        Route::get('coins/sell/{coin}', 'sell')->name('coins.sell.form');
+        Route::get('coins/sell', 'sell')->name('coins.sell');
+    });
 
     Route::group(['middleware' => ['can:access-admin']], function () {
         Route::resource('coins', CoinController::class);
         Route::resource('users', UserController::class);
-        Route::resource('roles', RoleController::class);
+        // Route::resource('roles', RoleController::class);
     });
+
+    Route::controller(WalletController::class)->group(function () {
+        Route::get('/wallets', 'index')->name('wallets.index');
+        Route::get('/wallets/create', 'create')->name('wallets.create');
+        Route::post('/wallets', 'store')->name('wallets.store');
+
+        Route::get('/wallets/{type}/edit', 'edit')->name('wallets.edit');
+        Route::put('/wallets/{type}', 'update')->name('wallets.update');
+    });
+
+    Route::resource('exchange-rates', ExchangeRateController::class);
 
 });
 

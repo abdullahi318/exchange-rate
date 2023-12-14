@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreMarketRequest;
 use App\Http\Requests\UpdateMarketRequest;
 use App\Models\Market;
+use App\Models\Coin;
+// use App\Models\Wallet;
+
 
 
 class MarketController extends Controller
@@ -14,30 +17,42 @@ class MarketController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-        {
-            return view('markets.index');
+    {   
+        $user = \Auth::user();
+        $coins  = Coin::get();
+        
+        $wallet = $user?->wallets()->first();
 
+        $balance = 0;
+
+        if($user->hasRole('user')) {
+           if($wallet) {
+            $balance = $wallet->balance;
+           } 
         }
+            
+        return view('markets.index', compact('coins', 'balance'));
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-        {
-            // return view('coins.create');
-        }
+    {
+        // return view('coins.create');
+    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreMarketRequest $request)
-        {
-            // $validated = $request->validated();
+    {
+        // $validated = $request->validated();
 
-            // Market::create($validated);
+        // Market::create($validated);
 
-            // return redirect()->route('markets.index')->withSuccess('markets added.');
-        }
+        // return redirect()->route('markets.index')->withSuccess('markets added.');
+    }
 
     /**
      * Display the specified resource.

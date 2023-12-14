@@ -34,8 +34,8 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th  class="px-6 py-3" scope="col">#</th>
-                                <th  class="px-6 py-3" scope="col">Asset Name</th>
-                                <th  class="px-6 py-3" scope="col">Asset Rate</th>
+                                <th  class="px-6 py-3" scope="col">Code</th>
+                                <th  class="px-6 py-3" scope="col">Name</th>
                                 <th  class="px-6 py-3" scope="col">Action</th>
                             </tr>
                         </thead>
@@ -43,8 +43,8 @@
                             @foreach($coins as $coin)
                             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                 <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $coin->id }}</th>
+                                <td  class="px-6 py-3">{{ $coin->code }}</td>
                                 <td  class="px-6 py-3">{{ $coin->name }}</td>
-                                <td  class="px-6 py-3">{{ $coin->rate }}</td>
                                
                                 <td  class="px-6 py-3">
                                     <div class="flex">

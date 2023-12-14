@@ -6,7 +6,8 @@ use App\Http\Requests\StoreTransactionsRequest;
 use App\Http\Requests\UpdateTransactionsRequest;
 use App\Models\Transactions;
 
-class TransactionsController extends Controller
+
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class TransactionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        return view('transactions.index');
     }
 
     /**

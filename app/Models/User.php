@@ -52,7 +52,15 @@ class User extends Authenticatable
         return UserFactory::new();
     }
 
-    protected function isAdmin() {
+    public function isAdmin() {
         return $this->roles()->where('name', 'admin')->exists();
+    }
+
+    public function transactions() {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function wallets() {
+        return $this->hasMany(Wallet::class);
     }
 }

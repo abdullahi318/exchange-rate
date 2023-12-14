@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Users') }}
+            {{ __('Users Wallets') }}
         </h2>
 
         <x-flash :message="session('message')" />
@@ -34,40 +34,24 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th  class="px-6 py-3" scope="col">#</th>
-                                <th  class="px-6 py-3" scope="col">Name</th>
-                                <th  class="px-6 py-3" scope="col">Email</th>
-                                <th  class="px-6 py-3" scope="col">Role</th>
-                                <th  class="px-6 py-3" scope="col">Action</th>
+                                <th  class="px-6 py-3" scope="col">User Name</th>
+                                <th  class="px-6 py-3" scope="col">Balance</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($wallets as $wallet)
                             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $user->id }}</th>
-                                <td  class="px-6 py-3">{{ $user->name }}</td>
-                                <td  class="px-6 py-3">{{ $user->email }}</td>
-                                <td  class="px-6 py-3">
-                                    @foreach($user->roles as $role)
-                                    <span>{{ Str::ucfirst($role->name) ?? 'Nill' }}</span>
-                                    @endforeach
-                                </td>
-                               
-                                <td  class="px-6 py-3">
-                                    <div class="flex">
-                                        <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 mr-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="{{ route('users.edit', $user) }}">Edit</a>
-                                        <form class="inline" role="delete" method="POST" action="{{ route('users.destroy', $user) }}">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 mr-1 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" type="submit">Delete</button>
-                                        </form>
-                                    </div>
-                                </td>
+                                <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</th>
+                                <td  class="px-6 py-3">{{ $wallet->user->name }}</td>
+                                <td  class="px-6 py-3">₦{{ number_format($wallet->balance, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    
+                   
+                    <div class="flex justify-center items-center m-2">
+                        {{ $wallets->links() }}
+                    </div>
                 </div>
             </div>
         </div>

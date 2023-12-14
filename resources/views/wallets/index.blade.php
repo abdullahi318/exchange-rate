@@ -29,26 +29,22 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <table class="w-full text-sm text-left text-gray-900 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th  class="px-6 py-3" scope="col">#</th>
-                                <th  class="px-6 py-3" scope="col">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($wallets as $wallet)
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $wallet->id }}</th>
-                                <td  class="px-6 py-3">{{ $wallet->balance}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody> 
-                             
-                    </table>
+                    <h1 class="text-green-700 text-xl font-semibold">My Wallet</h1>
+                    <div class="">
+                        <div class="text-2xl"><span class="font-bold">Balance:</span> <span class="text-green-700">₦{{ number_format($balance, 2) }}</span></div>
+                        @if($balance > 0)
+                        <div class="mt-4">
+                            <a href="{{ route('wallets.edit', ['type' => \App\Enums\TransactionType::DEPOSIT]) }}" class="text-md my-3 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Deposit</a>
+                            <a href="{{ route('wallets.edit', ['type' => \App\Enums\TransactionType::WITHDRAWAL]) }}" class="text-md my-3 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Widthdraw</a>
+                        </div>
+                        @endif
+                    </div>
+
+                    @if($balance == 0)
                     <div class="mt-4">
-                            <a class="block text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('wallets.create') }}">Fund Wallet</a>
-                    </div> 
+                        <a class="block text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('wallets.create') }}">Fund Wallet</a>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

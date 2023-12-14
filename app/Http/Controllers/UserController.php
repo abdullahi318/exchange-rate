@@ -58,16 +58,24 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $validated = $request->validated();
+        DB::transaction(function() use($request, $user) {
 
-        if($request->password) {
-            $validated['password'] = Hash::make($request->password);
-        }
+            $validated = $request->validated();
 
-        $user->update($validated);
+            if($request->password) {
+                $user->update(['password' => Hash::make($request->password)]);
+            }  
 
-        $user->syncRoles($request->input('roles'), []);
+            $user->update([
+                'name'     =>$request->name,
+                'email'    =>$request->email,    
+            ]);
+    
+            $user->syncRoles($request->input('roles'), []);
+    
+        });
 
+        
         return redirect()->route('users.index')->with('success', 'User updated successfully!');
     }
 

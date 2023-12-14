@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('coin_transactions', function (Blueprint $table) {
             $table->id();
-            $table->decimal("oldBalance", 16, 2)->default(0);
-            $table->decimal("newBalance", 16, 2)->default(0);
-            $table->decimal("amount", 16, 2)->default(0);
-            $table->enum("type", ['deposit', 'withdrawal']);
-            $table->uuid('reference');
+            $table->enum('type', ['buy', 'sell']);
+            $table->decimal('amount', 10, 2);
+            $table->decimal('total_cost', 10, 2)->nullable(); // For 'buy' transactions
+            $table->decimal('total_earnings', 10, 2)->nullable(); // For 'sell' transactions
+            $table->foreignId('coin_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('coin_transactions');
     }
 };

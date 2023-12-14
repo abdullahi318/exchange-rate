@@ -25,7 +25,8 @@ class UpdateCoinRequest extends FormRequest
     {
         return [
             'name' => 'required|max:150',
-            'rate' => 'required',
+            'code' => 'required|max:3|unique',
+           
         ];
     }
 }

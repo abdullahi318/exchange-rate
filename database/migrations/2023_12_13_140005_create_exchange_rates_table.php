@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('exchange_rates', function (Blueprint $table) {
             $table->id();
-            $table->decimal("oldBalance", 16, 2)->default(0);
-            $table->decimal("newBalance", 16, 2)->default(0);
-            $table->decimal("amount", 16, 2)->default(0);
-            $table->enum("type", ['deposit', 'withdrawal']);
-            $table->uuid('reference');
+            $table->unsignedBigInteger('from_currency');
+            $table->unsignedBigInteger('to_currency');
+            $table->decimal('rate', 10, 2);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('exchange_rates');
     }
 };

@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coins', function (Blueprint $table) {
-            $table->id();
-            $table->string('code', 3)->unique();
-            $table->string('name');
-            $table->decimal('sell_rate', 10, 2);
-            $table->decimal('buy_rate', 10, 2);
-            $table->timestamps();
+        Schema::table('transactions', function (Blueprint $table) {
+            // $table->uuid('reference');
+            // $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -30,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coins');
+        Schema::table('transactions', function (Blueprint $table) {
+            // $table->dropColumns('reference', 'user_id');
+        });
     }
 };

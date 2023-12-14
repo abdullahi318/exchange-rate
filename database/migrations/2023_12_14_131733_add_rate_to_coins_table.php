@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coins', function (Blueprint $table) {
-            $table->id();
-            $table->string('code', 3)->unique();
-            $table->string('name');
-            $table->decimal('sell_rate', 10, 2);
-            $table->decimal('buy_rate', 10, 2);
-            $table->timestamps();
+        Schema::table('coins', function (Blueprint $table) {
+            // $table->decimal('sell_rate', 10, 2);
+            // $table->decimal('buy_rate', 10, 2);
         });
     }
 
@@ -30,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coins');
+        Schema::table('coins', function (Blueprint $table) {
+            // $table->dropColumns(['sell_rate', 'buy_rate']);
+        });
     }
 };

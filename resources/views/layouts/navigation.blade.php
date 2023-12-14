@@ -12,27 +12,27 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <!-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>
+                    </x-nav-link> -->
 
                     @role('admin')
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Users') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                    <!-- <x-nav-link href="route('roles.index')" :active="request()->routeIs('roles.index')">
                         {{ __('Roles') }}
-                    </x-nav-link>
+                    </x-nav-link> -->
                     
                     <x-nav-link :href="route('coins.index')" :active="request()->routeIs('coins.index')">
                         {{ __('Assets') }}
                     </x-nav-link>
                     @endrole
 
-                    <x-nav-link :href="route('homes.index')" :active="request()->routeIs('homes.index')">
+                    <!-- <x-nav-link :href="route('homes.index')" :active="request()->routeIs('homes.index')">
                         {{ __('Home') }}
-                    </x-nav-link>
+                    </x-nav-link> -->
                     <x-nav-link :href="route('markets.index')" :active="request()->routeIs('markets.index')">
                         {{ __('Markets') }}
                     </x-nav-link>

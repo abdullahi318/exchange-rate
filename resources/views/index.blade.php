@@ -105,7 +105,7 @@
 
     <footer  class="fixed-bottom footer footer-expand-lg bg-secondary text-white">
         <small>
-          Copyright © 2023 Employees Managements System. All Rights Reserved.
+          Copyright © 2023 Exchange Rate Managements System. All Rights Reserved.
         </small>
     </footer>
 </body>
