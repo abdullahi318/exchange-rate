@@ -6,7 +6,7 @@
 
         <x-flash :message="session('message')" />
 
-        <form class="flex items-center">   
+        <form class="flex items-center">
             <label for="simple-search" class="sr-only">Search</label>
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -36,6 +36,8 @@
                                 <th  class="px-6 py-3" scope="col">#</th>
                                 <th  class="px-6 py-3" scope="col">Code</th>
                                 <th  class="px-6 py-3" scope="col">Name</th>
+                                <th  class="px-6 py-3" scope="col">Buy Rate</th>
+                                <th  class="px-6 py-3" scope="col">Sell Rate</th>
                                 <th  class="px-6 py-3" scope="col">Action</th>
                             </tr>
                         </thead>
@@ -45,7 +47,8 @@
                                 <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $coin->id }}</th>
                                 <td  class="px-6 py-3">{{ $coin->code }}</td>
                                 <td  class="px-6 py-3">{{ $coin->name }}</td>
-                               
+                                <td  class="px-6 py-3">{{ $coin->buy_rate }}</td>
+                                <td  class="px-6 py-3">{{ $coin->sell_rate }}</td>
                                 <td  class="px-6 py-3">
                                     <div class="flex">
                                         <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 mr-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="{{ route('coins.edit', $coin) }}">Edit</a>

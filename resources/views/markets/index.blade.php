@@ -6,7 +6,7 @@
 
         <x-flash :message="session('message')" />
 
-        <form class="flex items-center">   
+        <form class="flex items-center">
             <label for="simple-search" class="sr-only">Search</label>
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -32,6 +32,10 @@
                
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
+                        <div>
+                            <a href="{{ url('/currency-exchange') }}" class="mr-5 ml-5 my-3 text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Buy / Sell Now</a>
+                        </div>
+
                         <div class="grid justify-items-center;">
                             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                                 @if(!\Auth::user()->isAdmin())
@@ -51,12 +55,7 @@
                                         <th scope="col" class="px-6 py-3 text-dark">
                                             Assets Code
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-dark">
-                                            Rates 
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-dark">
-                                            Action 
-                                        </th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,19 +64,18 @@
                                     
                                         <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->name }}</a></td>
                                         <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->code }}</a></td>
-                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->rate }}</a></td>
-                                        <td  class="px-6 py-3 mx-3">
-                                            <a href="{{ route('coins.buy.form', $coin) }}" class="mr-5 ml-5 my-3 text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Buy</a> /
-                                            <a href="{{ route('coins.sell.form', $coin) }}" class="mr-5 ml-5 my-3 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Sell</a>
-                                        </td>
+                                        
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                    
+                       
+
                         </div>
+
+                        
     
-                    </div> 
+                    </div>
 
                 </div>
 

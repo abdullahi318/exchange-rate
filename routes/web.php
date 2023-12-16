@@ -11,6 +11,11 @@ use App\Http\Controllers\CoinTransactionController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Livewire\CurrencyExchange;
+use App\Http\Livewire\BuyCoins;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +70,9 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::resource('exchange-rates', ExchangeRateController::class);
+
+    Route::get('/currency-exchange', CurrencyExchange::class);
+    Route::get('/buy-coins', BuyCoins::class);
 
 });
 
