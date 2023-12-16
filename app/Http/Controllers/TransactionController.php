@@ -16,7 +16,9 @@ class TransactionController extends Controller
      */
     public function index()
     {   
-        return view('transactions.index');
+        $transactions = auth()->user()->transactions()->paginate(5);
+
+        return view('transactions.index', ['transactions' => $transactions, ]);
     }
 
     /**
