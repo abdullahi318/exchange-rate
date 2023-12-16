@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Deposit') }}
+            {{ __('Wallet') }}
         </h2>
     </x-slot>
 
@@ -15,7 +15,7 @@
                         @method('PUT')
 
                         <div class="mb-5">
-                            <label for="balance" class="block mb-2 text-md font-bold text-center rounded-md bg-blue-700 hover:bg-blue-800 text-white px-2.5 py-2.5 font-medium text-gray-900 dark:text-white mt-5 mb-4">Fund Wallet</label>
+                            <label for="balance" class="block mb-2 text-md font-bold text-center rounded-md bg-blue-700 hover:bg-blue-800 text-white px-2.5 py-2.5 font-medium text-gray-900 dark:text-white mt-5 mb-4">{{ $type === \App\Enums\TransactionType::DEPOSIT ? 'Fund Wallet' : 'Withrawal' }}</label>
                             <input type="text" name="balance" id="balance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter amount" required>
                             @error('balance')
                                 <div class="alert alert-danger">{{ $message }}</div>
