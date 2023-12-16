@@ -63,12 +63,7 @@ class WalletController extends Controller
             $user = \Auth::user();
 
             $wallet = $user->wallets()->first();
-
-            // if($wallet && $wallet->balance > 0) {
-            //     $this->update($request, TransactionType::DEPOSIT);  
-            //     return;
-            // }
-
+            
             $validated = $request->validated();
 
             $validated['user_id'] = $user->id;
