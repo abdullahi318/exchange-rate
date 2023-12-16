@@ -42,6 +42,9 @@
                     <x-nav-link :href="route('transactions.index')" :active="request()->routeIs('transactions.index')">
                         {{ __('Transactions') }}
                     </x-nav-link>
+                    <x-nav-link :href="url('/currency-exchange')" :active="request()->routeIs('transactions.index')">
+                        {{ __('Currency Exchange') }}
+                    </x-nav-link>
                 </div>
             </div>
 

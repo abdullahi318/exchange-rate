@@ -9,10 +9,14 @@ class Coin extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','code',];
+    protected $fillable = ['name','code','sell_rate', 'buy_rate'];
 
     public function exchangeRates()
     {
         $this->hasMany(ExchangeRate::class,'from_currency_id');
-    }    
+    }
+
+    public function coinTransactions() {
+        return $this->hasMany(CoinTransaction::class);
+    }
 }
