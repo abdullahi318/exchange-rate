@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTransactionsRequest;
 use App\Http\Requests\UpdateTransactionsRequest;
-use App\Models\Transactions;
+use App\Models\Transaction;
 
 
 class TransactionController extends Controller
@@ -16,7 +16,16 @@ class TransactionController extends Controller
      */
     public function index()
     {   
-        $transactions = auth()->user()->transactions()->paginate(5);
+        $user = auth()->user();
+
+        $transactions = '';
+
+        if($user->isAdmin())
+        {
+            $transactions = Transaction::latest()->paginate(5);
+        } else {
+            $transactions = $user->transactions()->paginate(5);
+        }
 
         return view('transactions.index', ['transactions' => $transactions, ]);
     }

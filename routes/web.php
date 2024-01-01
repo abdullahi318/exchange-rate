@@ -57,7 +57,6 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['can:access-admin']], function () {
         Route::resource('coins', CoinController::class);
         Route::resource('users', UserController::class);
-        // Route::resource('roles', RoleController::class);
     });
 
     Route::controller(WalletController::class)->group(function () {

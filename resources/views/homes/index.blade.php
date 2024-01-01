@@ -47,7 +47,13 @@
                                             Assets name
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-dark">
-                                            Rates 
+                                            Code 
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-dark">
+                                            Buy Rates 
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-dark">
+                                            Sell Rates 
                                         </th>
                                     </tr>
                                 </thead>
@@ -56,7 +62,9 @@
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-sm">
                                     
                                         <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->name }}</a></td>
-                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->rate }}</a></td>
+                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->code }}</a></td>
+                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->buy_rate }}</a></td>
+                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->sell_rate }}</a></td>
 
                                     </tr>
                                     @endforeach

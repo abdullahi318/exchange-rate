@@ -40,7 +40,6 @@
                             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                                 @if(!\Auth::user()->isAdmin())
                                 <p class="ml-5 my-3 text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Balance: ₦{{ number_format($balance, 2) }}</p>
-                                
                                 <div class="btn">
                                     <button type="button" class="mr-5 ml-5 my-3 text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><a href="{{ route('wallets.index') }}">Deposit</a></button>
                                 </div>
@@ -53,9 +52,14 @@
                                             Assets name
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-dark">
-                                            Assets Code
+                                            Code 
                                         </th>
-                                        
+                                        <th scope="col" class="px-6 py-3 text-dark">
+                                            Buy Rates 
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-dark">
+                                            Sell Rates 
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,12 +68,13 @@
                                     
                                         <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->name }}</a></td>
                                         <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->code }}</a></td>
-                                        
+                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->buy_rate }}</a></td>
+                                        <td  class="px-6 py-3 mx-3"><a href="##">{{ $coin->sell_rate }}</a></td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                       
 
                         </div>
 
